@@ -78,11 +78,10 @@ public class UserRestController {
             description = "Post a user by providing needed details",
             summary="Post a user by providing the firstName, lastName, and userRole consecutively."
     )
-    @PostMapping("/users/create/{username}/{password}")
-    public String createUser(@PathVariable String username, @PathVariable String password) {
-        User user = new User(username, password);
-        user.setId(12l);
-
+    @PostMapping("users/create")
+    public String createUser(@RequestBody User userRequest) {
+        User user = new User(userRequest.getUsername(), userRequest.getPassword());
+        //user.setId(12l);
         userService.save(user);
         return "User created - " + user;
     }
