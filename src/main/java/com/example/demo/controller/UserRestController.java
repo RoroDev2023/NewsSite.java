@@ -23,7 +23,7 @@ public class UserRestController {
 
     @Operation(
             description = "Get an endpoint for all users",
-            summary = "Get the JSON format of all the users"
+            summary = "Get all the users in JSON format"
     )
     @GetMapping("/users")
     public List<User> getAllUsers() {
@@ -32,7 +32,7 @@ public class UserRestController {
 
     @Operation(
             description = "Get an endpoint for a user with a unique ID",
-            summary = "Get the JSON format for a user providing a unique ID that exists in the database"
+            summary = "Get a specific user by providing a unique ID that exists in the database"
     )
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable Long id) {
@@ -78,9 +78,9 @@ public class UserRestController {
             description = "Post a user by providing needed details",
             summary="Post a user by providing the firstName, lastName, and userRole consecutively."
     )
-    @PostMapping("users/create")
+    @PostMapping("/users/create")
     public String createUser(@RequestBody User userRequest) {
-        User user = new User(userRequest.getUsername(), userRequest.getPassword());
+        User user = new User(userRequest.getUsername(), userRequest.getPassword(), userRequest.getEnabled());
         //user.setId(12l);
         userService.save(user);
         return "User created - " + user;

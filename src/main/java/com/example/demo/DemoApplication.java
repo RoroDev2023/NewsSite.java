@@ -1,14 +1,9 @@
 package com.example.demo;
 import java.util.List;
-import java.util.Scanner;  // Import the Scanner class
-
 import com.example.demo.entity.News;
-import com.example.demo.entity.User;
 import com.example.demo.newsdao.newsDAO;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 
 
