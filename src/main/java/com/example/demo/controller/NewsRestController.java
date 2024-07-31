@@ -1,13 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.News;
+import com.example.demo.newsservice.NewsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.newsdao.newsDAO;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,11 +13,11 @@ import java.util.List;
 @RestController
 public class NewsRestController {
 
-    private final newsDAO newsDAO;
+    private final NewsService newsService;
 
     @Autowired
-    public NewsRestController(newsDAO theNewsDAO) {
-        this.newsDAO = theNewsDAO;
+    public NewsRestController(NewsService theNewsService) {
+        newsService = theNewsService;
     }
 
     @Operation(
@@ -28,7 +26,7 @@ public class NewsRestController {
     )
     @GetMapping("/news")
     public List<News> getNews() {
-        return newsDAO.findAllNews();
+        return newsService.findAll();
     }
 
     @Operation(
@@ -36,8 +34,8 @@ public class NewsRestController {
             summary = "Get the JSON format for a news by providing a unique ID that exists in the database"
     )
     @GetMapping("/news/{id}")
-    public News getNewsById(@PathVariable int id) {
-        News news = newsDAO.findNewsById(id);
+    public News getNewsById(@PathVariable Long id) {
+        News news = newsService.findById(id);
         if (news == null) {
             throw new RuntimeException("News not found");
         }
@@ -50,11 +48,43 @@ public class NewsRestController {
     )
     @GetMapping("/news/title/{title}")
     public News getNewsByTitle(@PathVariable String title) {
-        News news = newsDAO.findNewsbyTitle(title);
+        News news = newsService.findByTitle(title);
 
         if (news == null) {
             throw new RuntimeException("News not found");
         }
         return news;
     }
+
+    @Operation(
+            description = "Delete the news with specific ID",
+            summary = "Delete the news from the database by providing a specific ID that exists in the database"
+    )
+    @DeleteMapping("/news/delete/{id}")
+    public String deleteNewsById(@PathVariable Long id) {
+        News tempNews = newsService.findById(id);
+
+        if (tempNews == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        newsService.delete(id);
+
+        return "User deleted - " + tempNews;
+    }
+
+
+    @Operation(
+            description = "Post a new news by providing needed details",
+            summary="Post a new news by providing the title."
+    )
+    @PostMapping("/news/create")
+    public String createUser(@RequestBody News newsRequest) {
+        News news = new News(newsRequest.getTitle());
+        newsService.save(news);
+        return "User created - " + news;
+    }
+
+
+
 }

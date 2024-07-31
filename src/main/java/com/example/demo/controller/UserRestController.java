@@ -72,19 +72,4 @@ public class UserRestController {
 
         return "User deleted - " + tempUser;
     }
-
-
-    @Operation(
-            description = "Post a user by providing needed details",
-            summary="Post a user by providing the firstName, lastName, and userRole consecutively."
-    )
-    @PostMapping("/users/create")
-    public String createUser(@RequestBody User userRequest) {
-        User user = new User(userRequest.getUsername(), userRequest.getPassword(), userRequest.getEnabled());
-        //user.setId(12l);
-        userService.save(user);
-        return "User created - " + user;
-    }
-
-
 }
