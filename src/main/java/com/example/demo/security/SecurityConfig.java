@@ -77,7 +77,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // CSRF korumasını devre dışı bırakır
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers(
-                                new AntPathRequestMatcher("/users/create"),
+                                new AntPathRequestMatcher("/register"),
+                                new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/users"),
                                 new AntPathRequestMatcher("/users/delete/{id}"),
                                 new AntPathRequestMatcher("/users/name/{name}"),
