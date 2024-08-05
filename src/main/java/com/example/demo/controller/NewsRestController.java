@@ -6,7 +6,10 @@ import com.example.demo.newsservice.NewsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -41,7 +44,7 @@ public class NewsRestController {
     public News getNewsById(@PathVariable Long id) {
         News news = newsService.findById(id);
         if (news == null) {
-            throw new RuntimeException("News not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
         }
         return news;
     }
@@ -57,7 +60,7 @@ public class NewsRestController {
         News news = newsService.findByTitle(title);
 
         if (news == null) {
-            throw new RuntimeException("News not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
         }
         return news;
     }
@@ -73,12 +76,12 @@ public class NewsRestController {
         News tempNews = newsService.findById(id);
 
         if (tempNews == null) {
-            throw new RuntimeException("User not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
         }
 
         newsService.delete(id);
 
-        return "User deleted - " + tempNews;
+        return "News deleted - " + tempNews;
     }
 
 
@@ -88,9 +91,9 @@ public class NewsRestController {
     )
     @CustomAnnotation
     @PostMapping("/news/create")
-    public String createUser(@RequestBody News newsRequest) {
+    public ResponseEntity<String> createNews(@RequestBody News newsRequest) {
         News news = new News(newsRequest.getTitle());
         newsService.save(news);
-        return "User created - " + news;
+        return ResponseEntity.status(HttpStatus.CREATED).body("News created - " + news);
     }
 }

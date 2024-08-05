@@ -6,7 +6,9 @@ import com.example.demo.userservice.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class UserRestController {
     public User getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
         if (user == null) {
-            throw new RuntimeException("User not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
         return user;
     }
@@ -58,7 +60,7 @@ public class UserRestController {
     public User getUserByFirstName(@PathVariable String username) {
         User user = userService.findByUsername(username);
         if (user == null) {
-            throw new RuntimeException("User not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
         return user;
     }
@@ -74,7 +76,7 @@ public class UserRestController {
         User tempUser = userService.findById(id);
 
         if (tempUser == null) {
-            throw new RuntimeException("User not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
 
         userService.delete(id);
