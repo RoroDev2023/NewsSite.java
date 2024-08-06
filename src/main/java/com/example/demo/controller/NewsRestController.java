@@ -2,14 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.annotation.CustomAnnotation;
 import com.example.demo.entity.News;
-import com.example.demo.newsservice.NewsService;
+import com.example.demo.service.NewsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -42,11 +41,7 @@ public class NewsRestController {
     @CustomAnnotation
     @GetMapping("/news/{id}")
     public News getNewsById(@PathVariable Long id) {
-        News news = newsService.findById(id);
-        if (news == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
-        }
-        return news;
+        return newsService.findById(id);
     }
 
 
@@ -57,12 +52,7 @@ public class NewsRestController {
     @CustomAnnotation
     @GetMapping("/news/title/{title}")
     public News getNewsByTitle(@PathVariable String title) {
-        News news = newsService.findByTitle(title);
-
-        if (news == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
-        }
-        return news;
+        return newsService.findByTitle(title);
     }
 
 
@@ -74,11 +64,6 @@ public class NewsRestController {
     @DeleteMapping("/news/delete/{id}")
     public String deleteNewsById(@PathVariable Long id) {
         News tempNews = newsService.findById(id);
-
-        if (tempNews == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found");
-        }
-
         newsService.delete(id);
 
         return "News deleted - " + tempNews;

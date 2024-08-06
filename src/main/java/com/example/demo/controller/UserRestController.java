@@ -2,13 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.annotation.CustomAnnotation;
 import com.example.demo.entity.User;
-import com.example.demo.userservice.UserService;
+import com.example.demo.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -43,11 +41,7 @@ public class UserRestController {
     @CustomAnnotation
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable Long id) {
-        User user = userService.findById(id);
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
-        return user;
+        return userService.findById(id);
     }
 
 
@@ -58,11 +52,7 @@ public class UserRestController {
     @CustomAnnotation
     @GetMapping("/users/name/{username}")
     public User getUserByFirstName(@PathVariable String username) {
-        User user = userService.findByUsername(username);
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
-        return user;
+        return userService.findByUsername(username);
     }
 
 
@@ -74,13 +64,7 @@ public class UserRestController {
     @DeleteMapping("/users/delete/{id}")
     public String deleteUserById(@PathVariable Long id) {
         User tempUser = userService.findById(id);
-
-        if (tempUser == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
-
         userService.delete(id);
-
         return "User deleted - " + tempUser;
     }
 }

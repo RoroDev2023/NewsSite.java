@@ -32,14 +32,6 @@ public class User {
     }
 
 
-    public Integer getEnabled() {
-        return Integer.parseInt(enabled);
-    }
-
-    public void setEnabled(Integer enabled) {
-        this.enabled = enabled.toString();
-    }
-
     @Override
     public String toString() {
         return "User{" +
