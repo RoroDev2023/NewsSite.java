@@ -1,43 +1,79 @@
 package com.example.demo.entity;
 
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity class representing a User.
+ */
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
 @Data
 public class User {
 
+    /**
+     * The unique identifier for a user.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="username")
+    /**
+     * The username of the user.
+     */
+    @Column(name = "username")
     private String username;
 
-    @Column(name="password")
+    /**
+     * The password of the user.
+     */
+    @Column(name = "password")
     private String password;
 
-    @Column(name="enabled")
+    /**
+     * Indicates whether the user is enabled.
+     */
+    @Column(name = "enabled")
     private String enabled;
 
-
-    public User(String username, String password, Integer enabled ) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled.toString();
+    /**
+     * Constructs a new User with the specified username,
+     * password, and enabled status.
+     *
+     * @param userUsername the username of the user
+     * @param userPassword the password of the user
+     * @param userEnabled the enabled parameter of the user
+     */
+    public User(final String userUsername, final String userPassword,
+                final Integer userEnabled) {
+        this.username = userUsername;
+        this.password = userPassword;
+        this.enabled = userEnabled.toString();
     }
 
-
+    /**
+     * Returns a string representation of the User.
+     *
+     * @return a string representation of the User
+     */
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+        return "User{"
+                +
+                "id=" + id
+                +
+                ", username='" + username + '\''
+                +
+                ", password='" + password + '\''
+                +
                 '}';
     }
 }
+

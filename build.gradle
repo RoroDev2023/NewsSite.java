@@ -8,6 +8,8 @@ plugins {
     id 'org.springframework.boot' version '3.3.2'
     id 'io.spring.dependency-management' version '1.1.6'
     id "org.springdoc.openapi-gradle-plugin" version '1.9.0'
+    id 'checkstyle'
+
 
 }
 
@@ -46,6 +48,18 @@ dependencies {
     testImplementation 'org.mockito:mockito-core'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation("com.puppycrawl.tools:checkstyle:10.17.0")
+
+}
+
+checkstyle {
+    toolVersion = "10.17.0"
+    configFile = file("config/checkstyle/checkstyle.xml")
+}
+
+dependencies {
+    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyle.toolVersion}"
 }
 
 tasks.named('test') {
