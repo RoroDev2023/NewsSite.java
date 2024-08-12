@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.17.0">
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/repository/NewsRepository.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/repository/UserRepository.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/repository/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/JwtService.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/util/JwtUtil.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/util/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/JwtRequestFilter.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/JwtAuthenticationFilter.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/CustomUserDetailsService.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/config/CorsConfig.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/security/SecurityConfig.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/security/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/entity/User.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/entity/News.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/entity/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/annotation/CustomAnnotation.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/annotation/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/controller/NewsRestController.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/controller/UserRestController.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/controller/AuthController.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/controller/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/aspect/GeneralInterceptorAspect.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/aspect/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/service/UserService.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/service/NewsServiceImpl.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/service/NewsService.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/service/UserServiceImpl.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/service/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/modal/authentication/AuthenticationResponse.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/modal/authentication/AuthenticationRequest.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/modal/authentication/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/package-info.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/main/java/com/example/demo/DemoApplication.java">
+</file>
+</checkstyle>

@@ -49,7 +49,9 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation("com.puppycrawl.tools:checkstyle:10.17.0")
+    implementation 'org.springframework.kafka:spring-kafka'
+
+    implementation 'com.puppycrawl.tools:checkstyle:10.17.0'
 
 }
 
