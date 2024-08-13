@@ -2,11 +2,15 @@
 <checkstyle version="10.17.0">
 <file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/NewsRestControllerTests.java">
 </file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/NewsServiceImplTests.java">
+</file>
 <file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/DemoApplicationTests.java">
 </file>
 <file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/UserRestControllerTests.java">
 </file>
 <file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/TestConfig.java">
+</file>
+<file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/UserServiceImplTests.java">
 </file>
 <file name="/Users/macbookpro/Desktop/demo 4/src/test/java/com/example/demo/package-info.java">
 </file>

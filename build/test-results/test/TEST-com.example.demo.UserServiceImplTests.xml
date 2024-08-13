@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.demo.UserServiceImplTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-08-13T07:46:14" hostname="MacBook-Pro-3.local" time="0.746">
+  <properties/>
+  <testcase name="testDeleteNotFound()" classname="com.example.demo.UserServiceImplTests" time="0.716"/>
+  <testcase name="testFindByUsernameNotFound()" classname="com.example.demo.UserServiceImplTests" time="0.016"/>
+  <testcase name="testFindAll()" classname="com.example.demo.UserServiceImplTests" time="0.003"/>
+  <testcase name="testSave()" classname="com.example.demo.UserServiceImplTests" time="0.001"/>
+  <testcase name="testFindById()" classname="com.example.demo.UserServiceImplTests" time="0.002"/>
+  <testcase name="testFindByUsername()" classname="com.example.demo.UserServiceImplTests" time="0.001"/>
+  <testcase name="testFindByIdNotFound()" classname="com.example.demo.UserServiceImplTests" time="0.001"/>
+  <testcase name="testDelete()" classname="com.example.demo.UserServiceImplTests" time="0.001"/>
+  <testcase name="testUpdate()" classname="com.example.demo.UserServiceImplTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/macbookpro/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.18/417558ea01fe9f0e8a94af28b9469d281c4e3984/byte-buddy-agent-1.14.18.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

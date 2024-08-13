@@ -17,21 +17,33 @@ import java.util.Optional;
 import static java.util.Optional.empty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doThrow;
 
 public class NewsServiceImplTests {
 
+    /**
+     * Mocked instance of {@link NewsRepository}.
+     */
     @Mock
     private NewsRepository newsRepository;
-
+    /**
+     * Injects the mocks into {@link NewsServiceImpl}.
+     */
     @InjectMocks
     private NewsServiceImpl newsServiceImpl;  // Directly test NewsServiceImpl
-
+    /**
+     * Sets up the test environment by initializing mocks.
+     */
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-
+    /**
+     * Tests the method for saving a user.
+     */
     @Test
     public void testSave() {
         News news = new News("Title1");
@@ -43,7 +55,9 @@ public class NewsServiceImplTests {
         // Verify that the save method was called on the repository
         verify(newsRepository, times(1)).save(news);
     }
-
+    /**
+     * Tests the method for finding news by ID.
+     */
     @Test
     public void testFindById() {
         News news = new News("Title1");
@@ -57,14 +71,21 @@ public class NewsServiceImplTests {
         verify(newsRepository, times(1)).findById(1);
     }
 
+    /**
+     * Tests the method for not finding news by ID.
+     */
     @Test
     public void testFindByIdNotFound() throws Exception {
         when(newsRepository.findById(1)).thenReturn(empty());
 
-        assertThrows(ResponseStatusException.class, () -> newsServiceImpl.findById(1L));
+        assertThrows(ResponseStatusException.class,
+                () -> newsServiceImpl.findById(1L));
         verify(newsRepository, times(1)).findById(1);
     }
 
+    /**
+     * Tests the method for finding all news.
+     */
     @Test
     public void testFindAll() {
         List<News> mockNewsList = Arrays.asList(
@@ -81,7 +102,9 @@ public class NewsServiceImplTests {
         assertEquals("Title 2", result.get(1).getTitle());
         verify(newsRepository, times(1)).findAll();
     }
-
+    /**
+     * Tests the method for deleting news by ID.
+     */
     @Test
     public void testDelete() {
         News news = new News("Title to delete");
@@ -94,16 +117,21 @@ public class NewsServiceImplTests {
         // Verify that the deleteById method was called on the repository
         verify(newsRepository, times(1)).deleteById(Math.toIntExact(2L));
     }
-
+    /**
+     * Tests the method for not deleting news by ID.
+     */
     @Test
     public void testDeleteNotFound() {
         doThrow(new IllegalArgumentException("News not found"))
                 .when(newsRepository).deleteById(Math.toIntExact(1L));
 
-        assertThrows(IllegalArgumentException.class, () -> newsServiceImpl.delete(1L));
+        assertThrows(IllegalArgumentException.class,
+                () -> newsServiceImpl.delete(1L));
         verify(newsRepository, times(1)).deleteById(Math.toIntExact(1L));
     }
-
+    /**
+     * Tests the method for finding news by title.
+     */
     @Test
     public void testFindByTitle() {
         News news = new News("Unique1");
@@ -116,14 +144,20 @@ public class NewsServiceImplTests {
         assertEquals(news, foundNews);
         verify(newsRepository, times(1)).findByTitle("Unique1");
     }
-
+    /**
+     * Tests the method for not finding news by title.
+     */
     @Test
     public void testFindByTitleNotFound() {
         when(newsRepository.findByTitle("News")).thenReturn(null);
-        assertThrows(ResponseStatusException.class, () -> newsServiceImpl.findByTitle("News"));
+        assertThrows(ResponseStatusException.class,
+                () -> newsServiceImpl.findByTitle("News"));
         verify(newsRepository, times(1)).findByTitle("News");
     }
 
+    /**
+     * Tests the method for updating news.
+     */
     @Test
     public void testUpdate() {
         News news = new News("Unique1");
